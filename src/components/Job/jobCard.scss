@@ -1,0 +1,40 @@
+@import "../../global.scss";
+
+.jobCard {
+  padding: 10px;
+
+  .nameItems {
+    @include mobile {
+      padding: 10px;
+    }
+  }
+  .items {
+    @include mobile {
+      padding: 10px;
+      display: grid;
+      flex-direction: column;
+      align-items: center;
+      justify-content: stretch;
+
+      .itemsTitle {
+        @include mobile {
+          padding-bottom: 70px;
+          font-size: 20px;
+        }
+      }
+      #skill {
+        @include mobile {
+          font-size: 12px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .bottomCard {
+    @include mobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

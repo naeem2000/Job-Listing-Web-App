@@ -1,0 +1,15 @@
+@import "../../global.scss";
+
+.header {
+  .h {
+    @include mobile {
+      font-size: 27px;
+    }
+  }
+
+  .button {
+    @include mobile {
+      font-size: 13px;
+    }
+  }
+}
