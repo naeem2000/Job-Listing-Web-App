@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { firestore, app } from "./firebase";
+import axios from "axios";
 
 import Header from "./components/Header/header";
 import SearchBar from "./components/searchBar/searchBar";
@@ -12,6 +13,22 @@ import NewJobModal from "./components/newJobModal/newJobModal";
 import { Close as CloseIcon } from "@material-ui/icons";
 
 export default () => {
+
+  const options = {
+    method: 'GET',
+    url: 'https://job-vacancies.p.rapidapi.com/vacancies/jora',
+    headers: {
+      'x-rapidapi-host': 'job-vacancies.p.rapidapi.com',
+      'x-rapidapi-key': '7b1bc3e158msha4bd8f7d76471f6p1ce109jsn3dac910cced3'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    console.log(response.data);
+  }).catch(function (error) {
+    console.error(error);
+  });
+
   const [jobs, setJobs] = useState([]);
 
   const [loading, setLoading] = useState(true);
