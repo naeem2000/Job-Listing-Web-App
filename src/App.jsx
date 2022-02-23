@@ -7,27 +7,40 @@ import SearchBar from "./components/searchBar/searchBar";
 import JobCard from "./components/Job/jobCard";
 import ViewJobModal from "./components/viewJobModal/viewJobModal";
 
-import { ThemeProvider, Grid, CircularProgress, Box, Button } from "@material-ui/core";
+import {
+  ThemeProvider,
+  Grid,
+  CircularProgress,
+  Box,
+  Button,
+} from "@material-ui/core";
 import theme from "./theme/theme";
 import NewJobModal from "./components/newJobModal/newJobModal";
 import { Close as CloseIcon } from "@material-ui/icons";
 
-export default () => {
+function App() {
+  let [responseData, setResponseData] = React.useState("");
 
-  const options = {
-    method: 'GET',
-    url: 'https://job-vacancies.p.rapidapi.com/vacancies/jora',
-    headers: {
-      'x-rapidapi-host': 'job-vacancies.p.rapidapi.com',
-      'x-rapidapi-key': '7b1bc3e158msha4bd8f7d76471f6p1ce109jsn3dac910cced3'
-    }
-  };
+  const fetchData = React.useCallback(() => {
+    axios({
+      method: "GET",
+      url: "https://job-vacancies.p.rapidapi.com/vacancies/jora",
+      headers: {
+        "x-rapidapi-host": "job-vacancies.p.rapidapi.com",
+        "x-rapidapi-key": "7b1bc3e158msha4bd8f7d76471f6p1ce109jsn3dac910cced3",
+      },
+    })
+      .then((response) => {
+        setResponseData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   
-  axios.request(options).then(function (response) {
-    console.log(response.data);
-  }).catch(function (error) {
-    console.error(error);
-  });
+  React.useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const [jobs, setJobs] = useState([]);
 
@@ -119,9 +132,27 @@ export default () => {
                 ))}
               </>
             )}
+            <main>
+              {responseData && (
+                <blockquote>
+                  "{responseData && responseData.content}"
+                  <small>
+                    {responseData &&
+                      responseData.originator &&
+                      responseData.originator.name}
+                  </small>
+                </blockquote>
+              )}
+            </main>
+            <pre>
+              <code>
+                {responseData && JSON.stringify(responseData, null, 4)}
+              </code>
+            </pre>
           </Grid>
         </Grid>
       </Box>
     </ThemeProvider>
   );
-};
+}
+export default App;
