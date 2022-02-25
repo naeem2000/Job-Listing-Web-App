@@ -3,6 +3,7 @@ import { firestore, app } from "./firebase";
 import axios from "axios";
 
 import Header from "./components/Header/header";
+import Map from "./components/map/map";
 import SearchBar from "./components/searchBar/searchBar";
 import JobCard from "./components/Job/jobCard";
 import ViewJobModal from "./components/viewJobModal/viewJobModal";
@@ -37,7 +38,7 @@ function App() {
         console.log(error);
       });
   }, []);
-  
+
   React.useEffect(() => {
     fetchData();
   }, [fetchData]);
@@ -51,6 +52,8 @@ function App() {
   const [newJobModal, setNewJobModal] = useState(false);
 
   const [viewJob, setViewJob] = useState({});
+
+  const [mapModal, setMapModal] = useState(false)
 
   const fetchJobs = async () => {
     setCustomSearch(false);
@@ -100,7 +103,8 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header openNewJobModal={() => setNewJobModal(true)} />
+      <Header openNewJobModal={() => setNewJobModal(true)} openMapModal={() => setMapModal(true)} />
+      <Map closeModal={() => setMapModal(false)} mapModal={mapModal}/>
       <NewJobModal
         closeModal={() => setNewJobModal(false)}
         newJobModal={newJobModal}
@@ -132,7 +136,7 @@ function App() {
                 ))}
               </>
             )}
-            <main>
+            {/* <main>
               {responseData && (
                 <blockquote>
                   "{responseData && responseData.content}"
@@ -148,7 +152,7 @@ function App() {
               <code>
                 {responseData && JSON.stringify(responseData, null, 4)}
               </code>
-            </pre>
+            </pre> */}
           </Grid>
         </Grid>
       </Box>
