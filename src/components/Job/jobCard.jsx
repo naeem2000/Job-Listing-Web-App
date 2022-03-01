@@ -9,10 +9,10 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #e8e8e8",
     cursor: "pointer",
     transition: ".50s",
-    boxShadow: "0px 5px 25px rgba(0, 0, 0, 0.7)",
+    boxShadow: "0px 5px 25px rgba(0, 0, 0, 0.2)",
 
     "&:hover": {
-      boxShadow: "0px 5px 25px rgba(0, 0, 0, 0.2)",
+      boxShadow: "0px 5px 25px rgba(0, 0, 0, 0.7)",
       borderLeft: "10px solid #4D64E4",
     },
   },
@@ -53,11 +53,15 @@ export default (props) => {
             </Typography>
           </Grid>
           <Grid item container xs className="items">
-            {props.skills.map((skill) => (
-              <Grid key={skill} className={classes.skillChip} item id="skill">
-                {skill}
+              <Grid className={classes.skillChip} item id="skill">
+                {props.category}
               </Grid>
-            ))}
+              <Grid className={classes.skillChip} item id="skill">
+                {props.type}
+              </Grid>
+              <Grid className={classes.skillChip} item id="skill">
+                {props.location}
+              </Grid>
           </Grid>
           <Grid
             item
@@ -71,7 +75,7 @@ export default (props) => {
               <div className="bottomCard">
                 <Typography variant="caption">
                   {differenceInBusinessDays(Date.now(), props.postedOn)} days
-                  ago | {props.type} | {props.location}
+                  ago
                 </Typography>
               </div>
             </Grid>

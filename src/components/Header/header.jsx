@@ -9,12 +9,12 @@ export default (props) => (
     <Grid container justify='center'>
       <Grid item xs={10}>
         <Box display='flex' justifyContent='space-between'>
-          <Typography className="h1" variant='h4'>Job Listing</Typography>
+          <Typography className="h1" variant='h4'>Local Jobs</Typography>
           <Button className="button" onClick={props.openNewJobModal} variant='contained'
            color='primary' disableElevation>
             Post a job
           </Button>
-          <Button onClick={props.openMapModal} className="button2" onClick={props.openMapModal} variant='contained'
+          <Button onClick={props.openMapModal} className="button" onClick={props.openMapModal} variant='contained'
            color='primary' disableElevation>
             Nearby Workplaces
           </Button>

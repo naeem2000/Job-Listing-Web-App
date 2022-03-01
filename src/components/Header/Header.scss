@@ -1,15 +1,18 @@
 @import "../../global.scss";
 
 .header {
-  .h {
+
+  .h1 {
     @include mobile {
-      font-size: 27px;
+      font-size: 25px;
+      justify-content: space-around;
     }
   }
 
   .button {
     @include mobile {
-      font-size: 13px;
+      font-size: 10px;
+      padding: 5px;
     }
   }
 }

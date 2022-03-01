@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { firestore, app } from "./firebase";
-import axios from "axios";
 
 import Header from "./components/Header/header";
 import Map from "./components/map/map";
@@ -20,28 +19,6 @@ import NewJobModal from "./components/newJobModal/newJobModal";
 import { Close as CloseIcon } from "@material-ui/icons";
 
 function App() {
-  let [responseData, setResponseData] = React.useState("");
-
-  const fetchData = React.useCallback(() => {
-    axios({
-      method: "GET",
-      url: "https://job-vacancies.p.rapidapi.com/vacancies/jora",
-      headers: {
-        "x-rapidapi-host": "job-vacancies.p.rapidapi.com",
-        "x-rapidapi-key": "7b1bc3e158msha4bd8f7d76471f6p1ce109jsn3dac910cced3",
-      },
-    })
-      .then((response) => {
-        setResponseData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  React.useEffect(() => {
-    fetchData();
-  }, [fetchData]);
 
   const [jobs, setJobs] = useState([]);
 
@@ -79,6 +56,7 @@ function App() {
       .orderBy("postedOn", "desc")
       .where("location", "==", jobSearch.location)
       .where("type", "==", jobSearch.type)
+      .where("category", "==", jobSearch.category)
       .get();
     const tempJobs = req.docs.map((job) => ({
       ...job.data(),
@@ -136,23 +114,6 @@ function App() {
                 ))}
               </>
             )}
-            {/* <main>
-              {responseData && (
-                <blockquote>
-                  "{responseData && responseData.content}"
-                  <small>
-                    {responseData &&
-                      responseData.originator &&
-                      responseData.originator.name}
-                  </small>
-                </blockquote>
-              )}
-            </main>
-            <pre>
-              <code>
-                {responseData && JSON.stringify(responseData, null, 4)}
-              </code>
-            </pre> */}
           </Grid>
         </Grid>
       </Box>

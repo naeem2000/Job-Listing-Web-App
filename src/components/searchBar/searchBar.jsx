@@ -30,6 +30,7 @@ const useStyles = makeStyles({
 export default (props) => {
   const [loading, setLoading] = useState(false);
   const [jobSearch, setJobSearch] = useState({
+    category: "Administration",
     type: "Full-time",
     location: "Remote",
   });
@@ -53,6 +54,32 @@ export default (props) => {
   return (
     <div className="search">
       <Box p={2} mt={-5} mb={2} className={classes.wrapper}>
+      <Select
+          onChange={handleChange}
+          name="category"
+          value={jobSearch.category}
+          className="searchBar"
+          disableUnderline
+          variant="filled"
+          defaultValue="Full-time"
+        >
+          <MenuItem className="item" value="Administration">
+            Administration
+          </MenuItem>
+          <MenuItem className="item" value="Assistant">
+            Assistant
+          </MenuItem>
+          <MenuItem value="Cleaner">Cleaner</MenuItem>
+          <MenuItem value="Construction">Construction</MenuItem>
+          <MenuItem value="Driver">Driver</MenuItem>
+          <MenuItem value="Gardening">Gardening</MenuItem>
+          <MenuItem value="Learnership">Learnership</MenuItem>
+          <MenuItem value="Information Technology">Information Technology</MenuItem>
+          <MenuItem value="Internship">Internship</MenuItem>
+          <MenuItem value="Labourer">Labourer</MenuItem>
+          <MenuItem value="Maintenance">Maintenance</MenuItem>
+          <MenuItem value="Safety">Safety</MenuItem>
+        </Select>
         <Select
           onChange={handleChange}
           name="type"
@@ -80,7 +107,7 @@ export default (props) => {
           defaultValue="Remote"
         >
           <MenuItem value="Remote">Remote</MenuItem>
-          <MenuItem value="In-office">In-office</MenuItem>
+          <MenuItem value="On-site">On-site</MenuItem>
         </Select>
         <Button
           disabled={loading}
@@ -96,7 +123,7 @@ export default (props) => {
             "Search"
           )}
         </Button>
-      </Box>
+        </Box>
     </div>
   );
 };

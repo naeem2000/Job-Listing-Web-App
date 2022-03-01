@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Map.css";
 import { Dialog, IconButton, DialogTitle, Box } from "@material-ui/core";
 import { Close as CloseIcon } from '@material-ui/icons';

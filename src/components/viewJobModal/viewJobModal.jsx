@@ -72,17 +72,14 @@ export default (props) => {
         </Box>
         <Box className={classes.info} display="flex">
           <Typography variant="caption">Company website: </Typography>
-          <Typography variant="body2">{props.job.companyUrl}</Typography>
+          <Typography variant="body2" component="a" href={props.job.companyUrl} target="_blank">{props.job.companyUrl}</Typography>
         </Box>
         <Box ml={0.5}>
-          <Typography variant="caption">Skills: </Typography>
+          <Typography variant="caption">Category: </Typography>
           <Grid container alignitems="center">
-            {props.job.skills &&
-              props.job.skills.map((skill) => (
-                <Grid item key={skill} className={classes.skillChip}>
-                  {skill}
+                <Grid item className={classes.skillChip}>
+            {props.category}
                 </Grid>
-              ))}
           </Grid>
         </Box>
       </DialogContent>

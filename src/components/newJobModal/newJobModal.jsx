@@ -49,7 +49,7 @@ const initState = {
   location: "Remote",
   link: "",
   description: "",
-  skills: [],
+  category: "",
 }
 
 export default (props) => {
@@ -64,22 +64,11 @@ export default (props) => {
     }));
   };
 
-  const addRemoveSkill = (skill) =>
-    jobDetails.skills.includes(skill)
-      ? setJobDetails((oldState) => ({
-          ...oldState,
-          skills: oldState.skills.filter((s) => s === skills),
-        }))
-      : setJobDetails((oldState) => ({
-          ...oldState,
-          skills: oldState.skills.concat(skill),
-        }));
-
   const handleSubmit = async () => {
     for (const field in jobDetails) {
       if (typeof jobDetails[field] === "string" && !jobDetails[field]) return;
     }
-    if (!jobDetails.skills.length) return;
+    if (!jobDetails.category.length) return;
     setLoading(true);
     await props.postJob(jobDetails);
     closeModal();
@@ -92,42 +81,6 @@ export default (props) => {
   }
 
   const classes = useStyles();
-
-  const skills = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "Firebase",
-    "React",
-    "React-Native",
-    "Flutter",
-    "Vue",
-    "Kotlin",
-    "Angular",
-    "Node",
-    "SCSS",
-    "RESTful API",
-    "AWS",
-    "Azure",
-    "Django",
-    "MongoDB",
-    "MySQL",
-    "PostgreSQL",
-    "Python",
-    "Oracle",
-    "Java",
-    "C#",
-    "C++",
-    ".NET",
-    "PHP",
-    "Swift",
-    "Ruby",
-    "Rust",
-    "Go",
-    "Jquery",
-    "Typescript",
-    "Gatsby",
-  ];
 
   console.log(jobDetails);
 
@@ -199,7 +152,7 @@ export default (props) => {
               fullWidth
             >
               <MenuItem value="Remote">Remote</MenuItem>
-              <MenuItem value="In-office">In-office</MenuItem>
+              <MenuItem value="On-site">On-site</MenuItem>
             </Select>
           </Grid>
           <Grid item xs={6}>
@@ -226,19 +179,35 @@ export default (props) => {
           </Grid>
         </Grid>
         <Box mt={2}>
-          <Typography>Skills*</Typography>
+          <Typography>Category*</Typography>
           <Box display="flex" flexWrap={"wrap"}>
-            {skills.map((skill) => (
-              <Box
-                onClick={() => addRemoveSkill(skill)}
-                className={`${classes.skillChip} ${
-                  jobDetails.skills.includes(skill) && classes.included
-                }`}
-                key={skill}
-              >
-                {skill}
-              </Box>
-            ))}
+              <Select
+          onChange={handleChange}
+          name="category"
+          value={jobDetails.category}
+          className="searchBar"
+          disableUnderline
+          variant="filled"
+          defaultValue="Administration"
+          fullWidth
+        >
+          <MenuItem className="item" value="Administration">
+            Administration
+          </MenuItem>
+          <MenuItem className="item" value="Assistant">
+            Assistant
+          </MenuItem>
+          <MenuItem value="Cleaner">Cleaner</MenuItem>
+          <MenuItem value="Construction">Construction</MenuItem>
+          <MenuItem value="Driver">Driver</MenuItem>
+          <MenuItem value="Gardening">Gardening</MenuItem>
+          <MenuItem value="Learnership">Learnership</MenuItem>
+          <MenuItem value="Information Technology">Information Technology</MenuItem>
+          <MenuItem value="Internship">Internship</MenuItem>
+          <MenuItem value="Labourer">Labourer</MenuItem>
+          <MenuItem value="Maintenance">Maintenance</MenuItem>
+          <MenuItem value="Safety">Safety</MenuItem>
+        </Select>
           </Box>
         </Box>
       </DialogContent>
