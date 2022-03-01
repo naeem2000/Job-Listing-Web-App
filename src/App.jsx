@@ -30,7 +30,7 @@ function App() {
 
   const [viewJob, setViewJob] = useState({});
 
-  const [mapModal, setMapModal] = useState(false)
+  const [mapModal, setMapModal] = useState(false);
 
   const fetchJobs = async () => {
     setCustomSearch(false);
@@ -81,8 +81,11 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header openNewJobModal={() => setNewJobModal(true)} openMapModal={() => setMapModal(true)} />
-      <Map closeModal={() => setMapModal(false)} mapModal={mapModal}/>
+      <Header
+        openNewJobModal={() => setNewJobModal(true)}
+        openMapModal={() => setMapModal(true)}
+      />
+      <Map closeModal={() => setMapModal(false)} mapModal={mapModal} />
       <NewJobModal
         closeModal={() => setNewJobModal(false)}
         newJobModal={newJobModal}
@@ -93,7 +96,6 @@ function App() {
         <Grid container justify="center">
           <Grid item xs={10}>
             <SearchBar fetchJobsCustom={fetchJobsCustom} />
-
             {loading ? (
               <Box display="flex" justifyContent="center">
                 {" "}

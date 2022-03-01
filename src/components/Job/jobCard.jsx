@@ -53,15 +53,15 @@ export default (props) => {
             </Typography>
           </Grid>
           <Grid item container xs className="items">
-              <Grid className={classes.skillChip} item id="skill">
-                {props.category}
-              </Grid>
-              <Grid className={classes.skillChip} item id="skill">
-                {props.type}
-              </Grid>
-              <Grid className={classes.skillChip} item id="skill">
-                {props.location}
-              </Grid>
+            <Grid className={classes.skillChip} item id="skill">
+              {props.category}
+            </Grid>
+            <Grid className={classes.skillChip} item id="skill">
+              {props.type}
+            </Grid>
+            <Grid className={classes.skillChip} item id="skill">
+              {props.location}
+            </Grid>
           </Grid>
           <Grid
             item

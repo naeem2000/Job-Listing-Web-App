@@ -1,7 +1,6 @@
 @import "../../global.scss";
 
 .header {
-
   .h1 {
     @include mobile {
       font-size: 25px;
@@ -11,7 +10,7 @@
 
   .button {
     @include mobile {
-      font-size: 10px;
+      font-size: 12px;
       padding: 5px;
     }
   }

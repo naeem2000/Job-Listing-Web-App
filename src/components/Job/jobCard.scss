@@ -8,6 +8,7 @@
       padding: 10px;
     }
   }
+
   .items {
     @include mobile {
       padding: 10px;
@@ -22,6 +23,7 @@
           font-size: 20px;
         }
       }
+
       #skill {
         @include mobile {
           font-size: 12px;
@@ -30,6 +32,7 @@
       }
     }
   }
+
   .bottomCard {
     @include mobile {
       display: flex;

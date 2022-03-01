@@ -54,7 +54,7 @@ export default (props) => {
   return (
     <div className="search">
       <Box p={2} mt={-5} mb={2} className={classes.wrapper}>
-      <Select
+        <Select
           onChange={handleChange}
           name="category"
           value={jobSearch.category}
@@ -74,7 +74,9 @@ export default (props) => {
           <MenuItem value="Driver">Driver</MenuItem>
           <MenuItem value="Gardening">Gardening</MenuItem>
           <MenuItem value="Learnership">Learnership</MenuItem>
-          <MenuItem value="Information Technology">Information Technology</MenuItem>
+          <MenuItem value="Information Technology">
+            Information Technology
+          </MenuItem>
           <MenuItem value="Internship">Internship</MenuItem>
           <MenuItem value="Labourer">Labourer</MenuItem>
           <MenuItem value="Maintenance">Maintenance</MenuItem>
@@ -123,7 +125,7 @@ export default (props) => {
             "Search"
           )}
         </Button>
-        </Box>
+      </Box>
     </div>
   );
 };

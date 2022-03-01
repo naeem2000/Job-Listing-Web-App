@@ -2,7 +2,6 @@ import React from "react";
 
 import {
   Box,
-  Grid,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -37,58 +36,67 @@ export default (props) => {
 
   return (
     <div className="jobInfo">
-    <Dialog open={!!Object.keys(props.job).length} fullWidth>
-      <DialogTitle>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          {props.job.title} @ {props.job.companyName}
-          <IconButton onClick={props.closeModal}>
-            <CloseIcon />
-          </IconButton>
-        </Box>
-      </DialogTitle>
-      <DialogContent>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Posted On: </Typography>
-          <Typography variant="body2">
-            {props.job.postedOn &&
-              format(props.job.postedOn, "dd/MMM/yyy HH:MM")}
-          </Typography>
-        </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Job type: </Typography>
-          <Typography variant="body2">{props.job.type}</Typography>
-        </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Job location: </Typography>
-          <Typography variant="body2">{props.job.location}</Typography>
-        </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Job description: </Typography>
-          <Typography variant="body2">{props.job.description}</Typography>
-        </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Company Name </Typography>
-          <Typography variant="body2">{props.job.companyName}</Typography>
-        </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Company website: </Typography>
-          <Typography variant="body2" component="a" href={props.job.companyUrl} target="_blank">{props.job.companyUrl}</Typography>
-        </Box>
-        <Box ml={0.5}>
-          <Typography variant="caption">Category: </Typography>
-          <Grid container alignitems="center">
-                <Grid item className={classes.skillChip}>
-            {props.category}
-                </Grid>
-          </Grid>
-        </Box>
-      </DialogContent>
-      <DialogActions>
-          <Button className="button" component="a" href={props.job.link} target="_blank" variant="outlined">
-                Apply
+      <Dialog open={!!Object.keys(props.job).length} fullWidth>
+        <DialogTitle>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            {props.job.title} @ {props.job.companyName}
+            <IconButton onClick={props.closeModal}>
+              <CloseIcon />
+            </IconButton>
+          </Box>
+        </DialogTitle>
+        <DialogContent>
+          <Box className={classes.info} display="flex">
+            <Typography variant="caption">Posted On: </Typography>
+            <Typography variant="body2">
+              {props.job.postedOn &&
+                format(props.job.postedOn, "dd/MMM/yyy HH:MM")}
+            </Typography>
+          </Box>
+          <Box className={classes.info} display="flex">
+            <Typography variant="caption">Job type: </Typography>
+            <Typography variant="body2">{props.job.type}</Typography>
+          </Box>
+          <Box className={classes.info} display="flex">
+            <Typography variant="caption">Job location: </Typography>
+            <Typography variant="body2">{props.job.location}</Typography>
+          </Box>
+          <Box className={classes.info} display="flex">
+            <Typography variant="caption">Job description: </Typography>
+            <Typography variant="body2">{props.job.description}</Typography>
+          </Box>
+          <Box className={classes.info} display="flex">
+            <Typography variant="caption">Company Name </Typography>
+            <Typography variant="body2">{props.job.companyName}</Typography>
+          </Box>
+          <Box className={classes.info} display="flex">
+            <Typography variant="caption">Company website: </Typography>
+            <Typography
+              variant="body2"
+              component="a"
+              href={props.job.companyUrl}
+              target="_blank"
+            >
+              {props.job.companyUrl}
+            </Typography>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            className="button"
+            component="a"
+            href={props.job.link}
+            target="_blank"
+            variant="outlined"
+          >
+            Apply
           </Button>
-      </DialogActions>
-    </Dialog>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };

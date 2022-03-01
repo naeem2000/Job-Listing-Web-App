@@ -6,15 +6,17 @@
     align-items: center;
     justify-content: center;
   }
+
   .searchBar {
     @include mobile {
-      font-size: 10px;
-      width: 70px;
+      font-size: 13px;
+      width: 75px;
     }
   }
+
   .button {
     @include mobile {
-      font-size: 10px;
+      font-size: 13px;
     }
   }
 }
